@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GURUKIRAN C S-Portfolio</title>
+  <meta name="description" content="Portfolio of GURUKIRAN C S – Full‑Stack Developer" />
+  <style>
+    :root{
+      --bg: #0b0f17;           /* background */
+      --panel: #101826;        /* card bg */
+      --text: #e5e7eb;         /* base text */
+      --muted: #a3adc2;        /* muted text */
+      --brand: #6ee7ff;        /* accent */
+      --brand-2: #a78bfa;      /* accent 2 */
+      --ring: rgba(110,231,255,.35);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+      --maxw: 1100px;
+      --speed: 260ms;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0; height:100%; background:var(--bg); color:var(--text); font-family:var(--font); scroll-behavior:smooth}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{max-width:var(--maxw); margin-inline:auto; padding:24px}
+    .glass{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); box-shadow:var(--shadow)}
+
+    /* Header */
+    header{position:sticky; top:0; z-index:50; backdrop-filter: blur(10px); background:rgba(11,15,23,.6); border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.3px}
+    .logo{width:34px; height:34px; border-radius:10px; background:linear-gradient(135deg, var(--brand), var(--brand-2)); display:grid; place-items:center; box-shadow:0 6px 16px var(--ring)}
+    .logo svg{width:22px; height:22px; color:#0b0f17}
+    .menu{display:flex; gap:14px; align-items:center}
+    .menu a{padding:8px 12px; color:var(--muted); border-radius:10px}
+    .menu a:hover{color:var(--text); background:rgba(255,255,255,.06)}
+    .menu .btn{color:#0b0f17; background:linear-gradient(135deg, var(--brand), var(--brand-2)); padding:10px 14px; border-radius:12px; font-weight:700; box-shadow:0 8px 20px var(--ring)}
+    .hamburger{display:none; border:1px solid rgba(255,255,255,.1); background:transparent; color:var(--text); padding:8px 10px; border-radius:12px}
+
+    /* Sections */
+    section{padding-block:56px}
+    .title{font-size:clamp(22px, 5vw, 30px); font-weight:800; margin:0 0 16px}
+    .muted{color:var(--muted)}
+
+    /* Hero */
+    .hero{display:grid; grid-template-columns:1.1fr .9fr; gap:30px; align-items:center}
+    .chip{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.12); color:var(--muted); background:rgba(255,255,255,.03)}
+    .hero h1{font-size:clamp(30px, 5.6vw, 54px); line-height:1.05; margin:.2em 0 .4em}
+    .cta{display:flex; gap:12px; flex-wrap:wrap}
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:14px; border:1px solid rgba(255,255,255,.12)}
+    .btn.primary{background:linear-gradient(135deg, var(--brand), var(--brand-2)); color:#0b0f17; font-weight:800; box-shadow:0 10px 24px var(--ring)}
+    .btn:hover{transform:translateY(-1px)}
+    .hero-card{padding:20px; position:relative; overflow:hidden}
+    .ring{position:absolute; inset:auto -20% -60% auto; width:380px; height:380px; background:radial-gradient(circle at 30% 30%, var(--brand), transparent 60%); filter:blur(50px); opacity:.4; pointer-events:none}
+    .avatar{width:130px; aspect-ratio:1; border-radius:22px; border:1px solid rgba(255,255,255,.1); overflow:hidden}
+
+    /* Skills */
+    .skills{display:flex; flex-wrap:wrap; gap:10px}
+    .skill{padding:8px 12px; border-radius:999px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); color:var(--text); font-weight:600; font-size:14px}
+
+    /* Projects */
+    .grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:18px}
+    .card{padding:18px; position:relative; overflow:hidden}
+    .card h3{margin:10px 0 8px; font-size:18px}
+    .tagrow{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .tag{font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.12); color:var(--muted)}
+    .card .actions{display:flex; gap:10px; margin-top:12px}
+
+    /* Experience */
+    .timeline{display:grid; gap:14px}
+    .tl-item{display:grid; grid-template-columns:120px 1fr; gap:16px; align-items:start}
+    .tl-date{color:var(--muted); font-size:13px}
+    .tl-card{padding:14px}
+
+    /* Contact */
+    form{display:grid; gap:10px}
+    input, textarea{padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.03); color:var(--text)}
+    input:focus, textarea:focus{outline:2px solid var(--ring); border-color:transparent}
+
+    /* Footer */
+    footer{padding:28px 24px; border-top:1px solid rgba(255,255,255,.06); color:var(--muted)}
+
+    /* Reveal animations */
+    [data-reveal]{opacity:0; transform:translateY(12px); transition:all var(--speed) ease}
+    [data-reveal].visible{opacity:1; transform:none}
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .hero{grid-template-columns:1fr;}
+      .grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 620px){
+      .menu{display:none}
+      .hamburger{display:inline-flex}
+      .grid{grid-template-columns:1fr}
+      .tl-item{grid-template-columns:1fr}
+      .avatar{width:100px}
+    }
+
+    /* Light theme (auto via JS toggle) */
+    .light{--bg:#f7fafc; --panel:#ffffff; --text:#0b1220; --muted:#55617a; --ring:rgba(105,65,198,.25); --shadow:0 10px 30px rgba(0,0,0,.08)}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Go to top">
+        <span class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l7 4v8l-7 8-7-8V6l7-4zm0 4.2L8 8v4.9l4 4.6 4-4.6V8l-4-1.8z"/></svg>
+        </span>
+        <span>GURUKIRAN C S</span>
+      </a>
+      <nav class="menu" aria-label="Primary">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+        <a class="btn" href="#" id="resumeLink">Resume</a>
+        <button id="themeToggle" class="btn" aria-label="Toggle theme">🌗 Theme</button>
+      </nav>
+      <button class="hamburger" id="openMenu" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <!-- Mobile drawer -->
+  <dialog id="drawer" class="glass" style="padding:16px; width:min(92vw,420px); border:none;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+      <strong>Menu</strong>
+      <button id="closeMenu" class="btn" aria-label="Close">✕</button>
+    </div>
+    <div style="display:grid; gap:6px">
+      <a href="#projects" onclick="drawer.close()">Projects</a>
+      <a href="#skills" onclick="drawer.close()">Skills</a>
+      <a href="#experience" onclick="drawer.close()">Experience</a>
+      <a href="#contact" onclick="drawer.close()">Contact</a>
+      <a href="#" id="resumeLinkMobile">Resume</a>
+      <button id="themeToggleMobile" class="btn" style="margin-top:8px">🌗 Theme</button>
+    </div>
+  </dialog>
+
+  <!-- Hero -->
+  <main id="top" class="container" style="padding-top:28px">
+    <section class="hero">
+      <div>
+        <span class="chip">👋 Hi, I'm <strong>GURUKIRAN C S</strong></span>
+        <h1>A passionate Full-Stack Developer crafting innovative digital solutions.</h1>
+        <p class="muted">I specialize in JavaScript, React, Node.js, Python and love shipping clean UX. Actively seeking internships.</p>
+        <div class="cta" style="margin-top:14px">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn" href="#contact">Contact Me</a>
+        </div>
+      </div>
+      <div class="hero-card glass" aria-labelledby="profileHeading">
+        <div class="ring" aria-hidden="true"></div>
+        <div style="display:flex; gap:16px; align-items:center">
+          <img class="avatar" alt="Profile photo" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?>
+            <svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'>
+              <defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
+                <stop offset='0%' stop-color='%236ee7ff'/><stop offset='100%' stop-color='%23a78bfa'/>
+              </linearGradient></defs>
+              <rect width='100%' height='100%' rx='24' fill='url(%23g)'/>
+              <circle cx='100' cy='70' r='34' fill='white' fill-opacity='.85'/>
+              <rect x='52' y='120' width='96' height='44' rx='20' fill='white' fill-opacity='.85'/>
+            </svg>"/>
+          <div>
+            <h3 id="profileHeading" style="margin:0">GURUKIRAN C S</h3>
+            <p class="muted" style="margin:.2em 0 0">Full-Stack Developer | MERN Stack & Python| ML & AI Enthusiast | Android App Developer (In Progress) | 1x 🏆 Hackathon Winner | Passionate About Building Tech Solutions</p>
+            <div style="display:flex; gap:10px; margin-top:10px">
+              <a class="btn" href="https://github.com/Gurukiran603" target="_blank" rel="noreferrer">GitHub</a>
+              <a class="btn" href="https://www.linkedin.com/in/csgurukiran?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a class="btn" href="mailto:kiranguru603@gmail.com">Email</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2 class="title">Featured Projects</h2>
+      <p class="muted">A few things I've built recently. Filter by type:</p>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin:12px 0 18px">
+        <button class="btn" data-filter="all">All</button>
+        <button class="btn" data-filter="web">Web</button>
+        <button class="btn" data-filter="ml">AI-ML</button>
+        <button class="btn" data-filter="other">Other</button>
+      </div>
+      <div class="grid" id="projectGrid">
+        <!-- CARD 1 -->
+        <article class="card glass" data-type="web" data-reveal>
+          <img alt="Project screenshot" src="data:image/svg+xml;utf8,<?xml version='1.0'?><svg xmlns='http://www.w3.org/2000/svg' width='800' height='420'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%23101826'/><stop offset='100%' stop-color='%23212b3e'/></linearGradient></defs><rect width='100%' height='100%' fill='url(%23g)'/><rect x='40' y='60' width='720' height='300' rx='18' fill='%236ee7ff' fill-opacity='.18'/></svg>" />
+          <h3>MERN E‑Commerce (Starter)</h3>
+          <p class="muted">Product browsing, cart, JWT auth, and responsive UI.</p>
+          <div class="tagrow">
+            <span class="tag">React</span><span class="tag">Node</span><span class="tag">MongoDB</span>
+          </div>
+          <div class="actions">
+            <a class="btn" href="#" target="_blank" rel="noreferrer">Code</a>
+          </div>
+        </article>
+        <!-- CARD 2 -->
+        <article class="card glass" data-type="ml" data-reveal>
+          <img alt="Project screenshot" src="data:image/svg+xml;utf8,<?xml version='1.0'?><svg xmlns='http://www.w3.org/2000/svg' width='800' height='420'><rect width='100%' height='100%' fill='%23101826'/><g fill='%23a78bfa'><circle cx='120' cy='210' r='48'/><circle cx='240' cy='210' r='48'/><rect x='320' y='170' width='340' height='80' rx='14'/></g></svg>" />
+          <h3>Traffic Police Hand Gesture Recognition Using AI</h3>
+          <p class="muted">Pose estimation with MoveNet + LSTM to interpret signals.</p>
+          <div class="tagrow">
+            <span class="tag">TensorFlow</span><span class="tag">MoveNet</span><span class="tag">LSTM</span>
+          </div>
+          <div class="actions">
+            <a class="btn" href="#" target="_blank" rel="noreferrer">Code</a>
+          </div>
+        </article>
+        <!-- CARD 3 -->
+        <article class="card glass" data-type="web" data-reveal>
+          <img alt="Project screenshot" src="data:image/svg+xml;utf8,<?xml version='1.0'?><svg xmlns='http://www.w3.org/2000/svg' width='800' height='420'><rect width='100%' height='100%' fill='%23101826'/><rect x='60' y='80' width='680' height='260' rx='18' fill='%23a78bfa' fill-opacity='.25'/></svg>" />
+          <h3>Detection of Phishing wesite using Machine Learning</h3>
+          <p class="muted"> </p>
+          <div class="tagrow">
+            <span class="tag">Aiml models</span><span class="tag">TypeScript</span><span class="tag">OpenAI</span>
+          </div>
+          <div class="actions">
+            <a class="btn" href="#" target="_blank" rel="noreferrer">Code</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h2 class="title">Skills</h2>
+      <div class="skills" data-reveal>
+        <span class="skill">Python</span>
+        <span class="skill">JavaScript (ES6+)</span>
+        <span class="skill">React</span>
+        <span class="skill">Node.js</span>
+        <span class="skill">Express</span>
+        <span class="skill">MongoDB</span>
+        <span class="skill">HTML5</span>
+        <span class="skill">CSS3</span>
+        <span class="skill">Java</span>
+        <span class="skill">C</span>
+        <span class="skill">Python</span>
+        <span class="skill">TensorFlow</span>
+        <span class="skill">Git & GitHub</span>
+                <span class="skill">Docker and kubernettes (basic)</span>
+
+      </div>
+    </section>
+
+    <!-- Experience / Education -->
+    <section id="experience">
+      <h2 class="title">Experience & Education</h2>
+      <div class="timeline">
+        <div class="tl-item" data-reveal>
+          <div class="tl-date">2024 — 2025</div>
+          <div class="tl-card glass">
+            <strong>🏅1x Hackathon Winner🏆</strong>
+            <p class="muted" style="margin:.2em 0 0"> The WINNERS of *Samanvaya: Affordable Medical Device Development*, an IEEE R10 Hackathon hosted by IEEE EMBS, IEEE Robotics and Automation Society and Dayananda Sagar Institutions </p>
+          </div>
+        </div>
+      </div> 
+        <div class="tl-item" data-reveal>
+          <div class="tl-date">2022 — Present</div>
+          <div class="tl-card glass">
+            <strong>Final year B.E in Computer Science and Engineering</strong>
+            <p class="muted" style="margin:.2em 0 0">BAHUBALI COLLEGE OF ENGINEERING • CGPA - 8.45 </p>
+          </div>
+        </div>
+
+               
+      <div class="tl-item" data-reveal><div class="tl-date">2020 — 2022</div>
+          <div class="tl-card glass">
+            <strong>MARIMALLAPPA'S PU COLLEGE</strong>
+            <p class="muted" style="margin:.2em 0 0"> PCMB Percentage - 81.3 %</p>
+          </div>
+        </div></div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2 class="title">Contact</h2>
+      <div class="glass" style="padding:16px" data-reveal>
+        <p class="muted" style="margin-top:0">Let's build something together. Email me at <a href="mailto:you@example.com">you@example.com</a> or use the form:</p>
+        <form id="contactForm">
+          <input required name="name" placeholder="GURUKIRAN C S" />
+          <input required type="email" name="email" placeholder="Email" />
+          <textarea required name="message" rows="4" placeholder="Message"></textarea>
+          <button class="btn primary" type="submit">Send</button>
+          <p id="formStatus" class="muted" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap">
+      <small>© <span id="year"></span> GURUKIRAN C S. All rights reserved.</small>
+      <div style="display:flex; gap:10px">
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const SETTINGS = {
+      resumeUrl: "Gurukiran full-stack resume .pdf", 
+      formEndpoint: "",
+    };
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle (persisted)
+    const root = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if(saved === 'light') document.body.classList.add('light');
+    function toggleTheme(){ document.body.classList.toggle('light'); localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark'); }
+    document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+    document.getElementById('themeToggleMobile').addEventListener('click', toggleTheme);
+
+    // Mobile drawer
+    const drawer = document.getElementById('drawer');
+    document.getElementById('openMenu').addEventListener('click',()=>drawer.showModal());
+    document.getElementById('closeMenu').addEventListener('click',()=>drawer.close());
+
+    // Resume links
+    function openResume(){ if(SETTINGS.resumeUrl) window.open(SETTINGS.resumeUrl, '_blank'); else alert('⚠️ Add your resume file and set SETTINGS.resumeUrl'); }
+    document.getElementById('resumeLink').addEventListener('click', (e)=>{ e.preventDefault(); openResume(); });
+    document.getElementById('resumeLinkMobile').addEventListener('click', (e)=>{ e.preventDefault(); drawer.close(); openResume(); });
+
+    const buttons=[...document.querySelectorAll('[data-filter]')];
+    const cards=[...document.querySelectorAll('#projectGrid .card')];
+    buttons.forEach(btn=>btn.addEventListener('click',()=>{
+      const type = btn.dataset.filter;
+      buttons.forEach(b=>b.classList.remove('primary'));
+      btn.classList.add('primary');
+      cards.forEach(c=> c.style.display = (type==='all' || c.dataset.type===type) ? '' : 'none');
+    }));
+
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target);} });
+    }, {threshold:.12});
+    document.querySelectorAll('[data-reveal]').forEach(el=>io.observe(el));
+
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      status.textContent = 'Sending…';
+      try{
+        if(!SETTINGS.formEndpoint){
+          await new Promise(r=>setTimeout(r, 500));
+          status.textContent = '⚠️ Add formEndpoint in SETTINGS or connect your backend.';
+          return;
+        }
+        const res = await fetch(SETTINGS.formEndpoint, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(Object.fromEntries(new FormData(form))) });
+        if(res.ok){ status.textContent = '✅ Sent! I will get back to you soon.'; form.reset(); }
+        else{ status.textContent = '❌ Failed to send. Please email me directly.' }
+      }catch(err){ status.textContent = '❌ Network error. Please email me directly.' }
+    });
+  </script>
+</body>
+</html>
