@@ -15,8 +15,7 @@ Skills & education section
 
 Contact form with Formspree/email support
 
-
-🛠 Tech Stack
+🛠️ Tech Stack
 
 HTML5
 
@@ -24,26 +23,19 @@ CSS3 (Flexbox, Grid, Animations)
 
 Vanilla JavaScript
 
-
 📂 How to Run
 
-1. Clone the repository:
+Clone the repository:
 
 git clone https://github.com/<your-username>/<your-repo-name>.git
 
 
-2. Open the folder in VS Code.
+Open the folder in VS Code.
 
-
-3. Open index.html in your browser (no server required).
-
-
+Open index.html in your browser (no server required).
 
 🌍 Live Demo
 
 👉 View Portfolio Here
-
-
----
 
 ✨ Feel free to fork or star this repo if you like the design!
